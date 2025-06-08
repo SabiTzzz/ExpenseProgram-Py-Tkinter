@@ -91,3 +91,15 @@ class DatabaseManager:
             'total_pengeluaran': total_pengeluaran,
             'saldo': total_pemasukan - total_pengeluaran
         }
+
+    def get_pengeluaran_by_kategori(self):
+        conn = self.get_connection()
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            SELECT kategori, SUM(jumlah) AS total
+            FROM transaksi
+            WHERE jenis = 'Pengeluaran'
+            GROUP BY kategori
+        """)
+        return cursor.fetchall()

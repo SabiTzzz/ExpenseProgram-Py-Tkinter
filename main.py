@@ -79,7 +79,7 @@ class MainApp:
     def tambah_transaksi(self):
         tambah_window = Toplevel(self.root)
         PageTambahTransaksi(tambah_window)
-        self.center_window(tambah_window, 412, 765)
+        self.center_window(tambah_window, 412, 752)
 
     def edit_transaksi(self):
         edit_window = Toplevel(self.root)
@@ -89,7 +89,7 @@ class MainApp:
     def lihat_transaksi(self):
         lihat_window = Toplevel(self.root)
         PageLihatTransaksi(lihat_window)
-        self.center_window(lihat_window, 800, 600)
+        self.center_window(lihat_window, 412, 752)
     
     def hapus_transaksi(self):
         hapus_window = Toplevel(self.root)
@@ -99,7 +99,7 @@ class MainApp:
     def laporan(self):
         laporan_window = Toplevel(self.root)
         PageLaporan(laporan_window)
-        self.center_window(laporan_window, 400, 300)
+        self.center_window(laporan_window, 412, 752)
 
 if __name__ == "__main__":
     root = Tk()

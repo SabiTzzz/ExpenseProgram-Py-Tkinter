@@ -1,3 +1,4 @@
+# Parent class Transaksi
 class Transaksi:
     def __init__(self, id_transaksi, kategori, jumlah, tanggal, deskripsi):
         self.id_transaksi = id_transaksi
@@ -13,16 +14,20 @@ class Transaksi:
     def get_jenis(self):
         return "Unknown"
 
+# Child class dari Transaksi
 class Pemasukan(Transaksi):
     def __init__(self, id_transaksi, kategori, jumlah, tanggal, deskripsi):
         super().__init__(id_transaksi, kategori, jumlah, tanggal, deskripsi)
     
+    # override method get_jenis
     def get_jenis(self):
         return "Pemasukan"
 
+# Child class dari Transaksi
 class Pengeluaran(Transaksi):
     def __init__(self, id_transaksi, kategori, jumlah, tanggal, deskripsi):
         super().__init__(id_transaksi, kategori, jumlah, tanggal, deskripsi)
     
+    # override method get_jenis
     def get_jenis(self):
         return "Pengeluaran"
