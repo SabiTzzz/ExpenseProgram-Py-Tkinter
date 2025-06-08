@@ -1,6 +1,7 @@
 from tkinter import Tk, Canvas, Button, PhotoImage, Toplevel
 from pathlib import Path
 from service.tambah import PageTambahTransaksi
+from service.edit import PageEditTransaksi
 from service.hapus import PageHapusTransaksi
 from service.lihat import PageLihatTransaksi
 from service.laporan import PageLaporan
@@ -59,7 +60,7 @@ class MainApp:
         Button(image=self.button_lihat, borderwidth=0, command=self.lihat_transaksi).place(x=225.0, y=286.0, width=150.0, height=120.0)
         # Button Edit Transaksi
         self.button_edit = PhotoImage(file=relative_to_assets("button_4.png"))
-        Button(image=self.button_edit, borderwidth=0, command=lambda: print("Edit Transaksi")).place(x=37.0, y=438.0, width=150.0, height=120.0)
+        Button(image=self.button_edit, borderwidth=0, command=self.edit_transaksi).place(x=37.0, y=438.0, width=150.0, height=120.0)
         # Button Hapus Transaksi
         self.button_hapus = PhotoImage(file=relative_to_assets("button_5.png"))
         Button(image=self.button_hapus, borderwidth=0, command=self.hapus_transaksi).place(x=225.0, y=438.0, width=150.0, height=120.0)
@@ -82,6 +83,10 @@ class MainApp:
     def tambah_transaksi(self):
         tambah_window = Toplevel(self.root)
         PageTambahTransaksi(tambah_window)
+
+    def edit_transaksi(self):
+        edit_window = Toplevel(self.root)
+        PageEditTransaksi(edit_window)
     
     def lihat_transaksi(self):
         lihat_window = Toplevel(self.root)
