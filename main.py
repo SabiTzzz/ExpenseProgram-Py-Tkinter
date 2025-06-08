@@ -84,7 +84,7 @@ class MainApp:
     def edit_transaksi(self):
         edit_window = Toplevel(self.root)
         PageEditTransaksi(edit_window)
-        self.center_window(edit_window, 800, 600)
+        self.center_window(edit_window, 412, 752)
     
     def lihat_transaksi(self):
         lihat_window = Toplevel(self.root)
