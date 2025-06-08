@@ -7,7 +7,7 @@ from service.lihat import PageLihatTransaksi
 from service.laporan import PageLaporan
 from database import DatabaseManager
 
-OUTPUT_PATH = Path(__file__).parent
+OUTPUT_PATH = Path(__file__).parent 
 ASSETS_PATH = OUTPUT_PATH / "assets/frame0"
 
 def relative_to_assets(path: str) -> Path:
@@ -23,7 +23,7 @@ class MainApp:
         # Initialize database
         self.db = DatabaseManager()
         
-        self.canvas = Canvas(
+        self.canvas = Canvas(   
             root,
             bg="#F1F1F1",
             height=752,
@@ -79,7 +79,7 @@ class MainApp:
     def tambah_transaksi(self):
         tambah_window = Toplevel(self.root)
         PageTambahTransaksi(tambah_window)
-        self.center_window(tambah_window, 400, 400)
+        self.center_window(tambah_window, 412, 765)
 
     def edit_transaksi(self):
         edit_window = Toplevel(self.root)
