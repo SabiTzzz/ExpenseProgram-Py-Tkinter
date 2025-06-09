@@ -152,8 +152,8 @@ class PageLaporan:
         self.grafik_frame = Frame(parent_canvas, bg="#F1F1F1", width=250, height=250)
         self.grafik_frame.pack_propagate(False)
 
-        fig = Figure(figsize=(5, 5), dpi=100)
-        ax = fig.add_subplot(111)
+        fig = Figure(figsize=(5, 5), dpi=100, facecolor="#F1F1F1")
+        ax = fig.add_subplot(111, facecolor="#F1F1F1")
         wedges, texts, autotexts = ax.pie(
             values,
             colors=colors,
@@ -164,7 +164,7 @@ class PageLaporan:
         for i, autotext in enumerate(autotexts):
             autotext.set_text(f"{labels[i]}\n{autotext.get_text()}")
         ax.axis('equal')
-        ax.set_title("Persentase Pengeluaran", fontsize=9, fontweight='bold')
+        ax.set_title("Persentase Pengeluaran", fontsize=9, fontweight='bold', backgroundcolor="#F1F1F1")
 
         chart_canvas = FigureCanvasTkAgg(fig, master=self.grafik_frame)
         chart_canvas.draw()
