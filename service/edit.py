@@ -73,10 +73,6 @@ class PageEditTransaksi:
         self.scroll_canvas.place(x=10, y=150, width=412, height=450)
         self.scrollbar.place(x=390, y=150, height=450)
 
-        # Info Label
-        self.info_label = Label(self.root, text="", font=("Arial", 10), bg="#FFFFFF", fg="#666")
-        self.info_label.place(x=10, y=710)
-    
     @staticmethod
     def center_window(window, width=412, height=752):
         window.update_idletasks()
