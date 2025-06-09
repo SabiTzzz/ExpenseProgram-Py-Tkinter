@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox, ttk
 from datetime import datetime
 from database import DatabaseManager
-
+from service.formEdit import PageFormEditTransaksi
 from pathlib import Path
 
 OUTPUT_PATH = Path(__file__).parent
@@ -40,11 +40,12 @@ class PageEditTransaksi:
         Label(self.canvas, text="Masukkan ID Transaksi Yang Ingin Diubah", bg="#23A8AA", fg="#FFFFFF", font=("Arial", 10)).place(x=80, y=640.0)
 
         self.button_ubahId = PhotoImage(file=relative_to_assets("btnUbahId.png"))
-        Button(self.root, image=self.button_ubahId, borderwidth=0, bg="#369394", command=self.form_edit_transaksi, relief="flat", highlightthickness=0).place(x=280.0, y=670.0, width=103.0, height=45.0)
+        Button(self.root, image=self.button_ubahId, borderwidth=0, bg="#369394", command=lambda: self.form_edit_transaksi(self.txt_id.get()), relief="flat", highlightthickness=0).place(x=280.0, y=670.0, width=103.0, height=45.0)
 
         self.bgtxt_id = PhotoImage(file=relative_to_assets("Textbox.png"))
         self.txt_id_frame = self.canvas.create_image(120.0, 695.0, image=self.bgtxt_id)
-        Entry(self.canvas, font=("Arial", 12), width=20, relief="flat").place(x=45, y=677.0, width=150, height=26)
+        self.txt_id = Entry(self.canvas, font=("Arial", 12), width=20, relief="flat")
+        self.txt_id.place(x=45, y=677.0, width=150, height=26)
 
         self.button_kembali = PhotoImage(file=relative_to_assets("btnKembali.png"))
         Button(
@@ -76,117 +77,30 @@ class PageEditTransaksi:
         self.info_label = Label(self.root, text="", font=("Arial", 10), bg="#FFFFFF", fg="#666")
         self.info_label.place(x=10, y=710)
     
-    def form_edit_transaksi(self):
-        try:
-            # Get ID from entry
-            id_entry = self.canvas.find_withtag("current")
-            id_value = self.canvas.itemcget(id_entry, "text").strip()
-            
-            if not id_value.isdigit():
-                messagebox.showerror("Error", "ID harus berupa angka!")
-                return
-            
-            transaksi_id = int(id_value)
-            
-            self.canvas_e = Canvas(
-                self.root,
-                bg="#FFFFFF",
-                height=752,
-                width=412,
-                bd=0,
-                highlightthickness=0,
-                relief="ridge"
-            )
-            self.canvas_e.place(x=0, y=0)
+    @staticmethod
+    def center_window(window, width=412, height=752):
+        window.update_idletasks()
+        screen_width = window.winfo_screenwidth()
+        screen_height = window.winfo_screenheight()
+        x = (screen_width // 2) - (width // 2)
+        y = (screen_height // 2) - (height // 2)
+        window.geometry(f"{width}x{height}+{x}+{y}")
+    
+    def form_edit_transaksi(self, id_transaksi):
+        if not id_transaksi:
+            messagebox.showwarning("Warning", "Masukkan ID transaksi yang valid!")
+            return
+        
+        transaksi_list = self.db.get_all_transaksi()
 
-            self.image_edit = PhotoImage(file=relative_to_assets("EditForm.png"))
-            self.canvas_e.create_image(206.0, 376.0, image=self.image_edit)
-
-            # Tombol Kembali
-            self.btn_kembali_edit = PhotoImage(file=relative_to_assets("btnKembali.png"))
-            Button(
-                self.root,
-                image=self.btn_kembali_edit,
-                borderwidth=0,
-                highlightthickness=0,
-                command=self.root.destroy,
-                relief="flat"
-            ).place(x=13.0, y=35.0, width=100.0, height=22.188)
-
-            # Tombol Simpan Perubahan
-            self.btn_simpan_edit = PhotoImage(file=relative_to_assets("btnSimpanEdit.png"))
-            Button(
-                self.root,
-                image=self.btn_simpan_edit,
-                borderwidth=0,
-                highlightthickness=0,
-                command=self.simpan_perubahan,
-                relief="flat"
-            ).place(x=86.0, y=692.0, width=108.0, height=30.0)
-
-            # Tombol Batal
-            self.btn_batal_edit = PhotoImage(file=relative_to_assets("btnBatalEdit.png"))
-            Button(
-                self.root,
-                image=self.btn_batal_edit,
-                borderwidth=0,
-                highlightthickness=0,
-                command=self.reset_form,
-                relief="flat"
-            ).place(x=224.0, y=692.0, width=108.0, height=30.0)
-            
-            # Deskripsi (Text)
-            self.entry_image_1 = PhotoImage(file=self.relative_to_assets("textarea.png"))
-            self.canvas_t.create_image(205.0, 581.0, image=self.entry_image_1)
-            self.deskripsi_text = Text(
-                self.window, bd=0, bg="#FFFFFF", fg="#000716", highlightthickness=0
-            )
-            self.deskripsi_text.place(x=55.0, y=530.0, width=300.0, height=100.0)
-
-            # Jumlah
-            self.entry_image_2 = PhotoImage(file=self.relative_to_assets("txtJumlah.png"))
-            self.canvas_t.create_image(205.0, 388.0, image=self.entry_image_2)
-            self.jumlah_entry = Entry(
-                self.window, bd=0, bg="#FFFFFF", fg="#000716", highlightthickness=0
-            )
-            self.jumlah_entry.place(x=55.0, y=372.0, width=300.0, height=30.0)
-
-            # Kategori
-            self.entry_image_3 = PhotoImage(file=self.relative_to_assets("txtKategori.png"))
-            self.canvas_t.create_image(205.0, 310.0, image=self.entry_image_3)
-            self.kategori_entry = Entry(
-                self.window, bd=0, bg="#FFFFFF", fg="#000716", highlightthickness=0
-            )
-            self.kategori_entry.place(x=55.0, y=294.0, width=300.0, height=30.0)
-
-            # Tanggal
-            self.entry_image_4 = PhotoImage(file=self.relative_to_assets("txtTanggal.png"))
-            self.canvas_t.create_image(205.0, 469.0, image=self.entry_image_4)
-            self.tanggal_entry = Entry(
-                self.window, bd=0, bg="#FFFFFF", fg="#000716", highlightthickness=0
-            )
-            self.tanggal_entry.place(x=55.0, y=453.0, width=300.0, height=30.0)
-            self.tanggal_entry.insert(0, datetime.now().strftime("%d-%m-%Y"))
-
-            # Jenis transaksi (Combobox)
-            self.jenis_var = StringVar(value="Pemasukan")
-            self.jenis_combo = ttk.Combobox(
-                self.window,
-                textvariable=self.jenis_var,
-                values=["Pemasukan", "Pengeluaran"],
-                state="readonly"
-            )
-            self.jenis_combo.place(x=55.0, y=210.0, width=300.0, height=32.0)
-
-            # Variabel untuk menyimpan ID yang dipilih
-            self.selected_id = transaksi_id
-            self.status_label = Label(self.root, text="", font=("Arial", 10), bg="#FFFFFF", fg="#666")
-            self.status_label.place(x=10, y=710)
-            self.load_transaksi_detail(transaksi_id)
-            self.load_transaksi_list()
-            
-        except Exception as e:
-            messagebox.showerror("Error", f"Gagal memuat detail transaksi: {str(e)}")
+        for transaksi in transaksi_list:
+            if str(transaksi[0]) == id_transaksi:
+                formEdit_window = Toplevel(self.root)
+                PageFormEditTransaksi(formEdit_window, id_transaksi)
+                self.center_window(formEdit_window)
+                break
+        else:
+            messagebox.showwarning("Warning", "Transaksi tidak ditemukan!")
 
     def load_transaksi_list(self):
         try:
