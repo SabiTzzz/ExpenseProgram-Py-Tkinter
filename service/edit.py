@@ -55,191 +55,190 @@ class PageEditTransaksi:
             command=self.root.destroy,
             relief="flat"
         ).place(x=13.0, y=35.0, width=100.0, height=22.188)
-        # Title
-        # title_label = Label(self.root, text="Edit Transaksi", font=("Arial", 16, "bold"), 
-        #                    bg="#F1F1F1", fg="#333")
-        # title_label.pack(pady=15)
-        
-        # # Main container
-        # main_frame = Frame(self.root, bg="#F1F1F1")
-        # main_frame.pack(fill="both", expand=True, padx=20, pady=10)
-        
-        # # Left side - List of transactions
-        # left_frame = LabelFrame(main_frame, text="Pilih Transaksi", font=("Arial", 12, "bold"),
-        #                        bg="#F1F1F1", fg="#333", padx=10, pady=10)
-        # left_frame.pack(side="left", fill="both", expand=True, padx=(0, 10))
-        
-        # # Treeview untuk daftar transaksi
-        # columns = ("ID", "Jenis", "Kategori", "Jumlah", "Tanggal")
-        # self.tree = ttk.Treeview(left_frame, columns=columns, show="headings", height=15)
-        
-        # # Configure columns
-        # self.tree.heading("ID", text="ID")
-        # self.tree.heading("Jenis", text="Jenis")
-        # self.tree.heading("Kategori", text="Kategori")
-        # self.tree.heading("Jumlah", text="Jumlah")
-        # self.tree.heading("Tanggal", text="Tanggal")
-        
-        # self.tree.column("ID", width=40, anchor="center")
-        # self.tree.column("Jenis", width=80, anchor="center")
-        # self.tree.column("Kategori", width=100)
-        # self.tree.column("Jumlah", width=100, anchor="e")
-        # self.tree.column("Tanggal", width=90, anchor="center")
-        
-        # # Scrollbar untuk treeview
-        # tree_scroll = ttk.Scrollbar(left_frame, orient="vertical", command=self.tree.yview)
-        # self.tree.configure(yscrollcommand=tree_scroll.set)
-        
-        # self.tree.pack(side="left", fill="both", expand=True)
-        # tree_scroll.pack(side="right", fill="y")
-        
-        # # Bind selection event
-        # self.tree.bind("<<TreeviewSelect>>", self.on_select)
-        
-        # # Right side - Edit form
-        # right_frame = LabelFrame(main_frame, text="Form Edit", font=("Arial", 12, "bold"),
-        #                         bg="#F1F1F1", fg="#333", padx=15, pady=15)
-        # right_frame.pack(side="right", fill="y", padx=(10, 0))
-        
-        # # Form fields
-        # # ID (readonly)
-        # Label(right_frame, text="ID Transaksi:", bg="#F1F1F1", font=("Arial", 10)).grid(row=0, column=0, sticky="w", pady=5)
-        # self.id_var = StringVar()
-        # id_entry = Entry(right_frame, textvariable=self.id_var, state="readonly", width=25)
-        # id_entry.grid(row=0, column=1, sticky="ew", pady=5, padx=(10, 0))
-        
-        # # Jenis Transaksi
-        # Label(right_frame, text="Jenis:", bg="#F1F1F1", font=("Arial", 10)).grid(row=1, column=0, sticky="w", pady=5)
-        # self.jenis_var = StringVar()
-        # jenis_combo = ttk.Combobox(right_frame, textvariable=self.jenis_var, 
-        #                            values=["Pemasukan", "Pengeluaran"], state="readonly", width=23)
-        # jenis_combo.grid(row=1, column=1, sticky="ew", pady=5, padx=(10, 0))
-        
-        # # Kategori
-        # Label(right_frame, text="Kategori:", bg="#F1F1F1", font=("Arial", 10)).grid(row=2, column=0, sticky="w", pady=5)
-        # self.kategori_var = StringVar()
-        # kategori_entry = Entry(right_frame, textvariable=self.kategori_var, width=25)
-        # kategori_entry.grid(row=2, column=1, sticky="ew", pady=5, padx=(10, 0))
-        
-        # # Jumlah
-        # Label(right_frame, text="Jumlah:", bg="#F1F1F1", font=("Arial", 10)).grid(row=3, column=0, sticky="w", pady=5)
-        # self.jumlah_var = StringVar()
-        # jumlah_entry = Entry(right_frame, textvariable=self.jumlah_var, width=25)
-        # jumlah_entry.grid(row=3, column=1, sticky="ew", pady=5, padx=(10, 0))
-        
-        # # Tanggal
-        # Label(right_frame, text="Tanggal:", bg="#F1F1F1", font=("Arial", 10)).grid(row=4, column=0, sticky="w", pady=5)
-        # self.tanggal_var = StringVar()
-        # tanggal_entry = Entry(right_frame, textvariable=self.tanggal_var, width=25)
-        # tanggal_entry.grid(row=4, column=1, sticky="ew", pady=5, padx=(10, 0))
-        
-        # # Deskripsi
-        # Label(right_frame, text="Deskripsi:", bg="#F1F1F1", font=("Arial", 10)).grid(row=5, column=0, sticky="nw", pady=5)
-        # self.deskripsi_text = Text(right_frame, height=4, width=25)
-        # self.deskripsi_text.grid(row=5, column=1, sticky="ew", pady=5, padx=(10, 0))
-        
-        # # Buttons
-        # btn_frame = Frame(right_frame, bg="#F1F1F1")
-        # btn_frame.grid(row=6, column=0, columnspan=2, pady=20)
-        
-        # Button(btn_frame, text="🔄 Refresh List", command=self.load_transaksi_list, 
-        #        bg="#2196F3", fg="white", font=("Arial", 9), padx=10).pack(side="top", fill="x", pady=2)
-        
-        # Button(btn_frame, text="💾 Simpan Perubahan", command=self.simpan_perubahan, 
-        #        bg="#4CAF50", fg="white", font=("Arial", 9), padx=10).pack(side="top", fill="x", pady=2)
-        
-        # Button(btn_frame, text="🔄 Reset Form", command=self.reset_form, 
-        #        bg="#FF9800", fg="white", font=("Arial", 9), padx=10).pack(side="top", fill="x", pady=2)
-        
-        # Button(btn_frame, text="❌ Tutup", command=self.root.destroy, 
-        #        bg="#f44336", fg="white", font=("Arial", 9), padx=10).pack(side="top", fill="x", pady=2)
-        
-        # # Configure grid weights
-        # right_frame.columnconfigure(1, weight=1)
-        
-        # # Status label
-        # self.status_label = Label(self.root, text="Pilih transaksi dari daftar untuk mengedit", 
-        #                          font=("Arial", 10), bg="#F1F1F1", fg="#666")
-        # self.status_label.pack(pady=10)
+
+        # Frame scrollable
+        self.scroll_canvas = Canvas(self.root, bg="#F1F1F1", bd=0, highlightthickness=0)
+        self.scroll_frame = Frame(self.scroll_canvas, bg="#F1F1F1")
+        self.scrollbar = Scrollbar(self.root, orient=VERTICAL, command=self.scroll_canvas.yview)
+
+        self.scroll_canvas.create_window((0, 0), window=self.scroll_frame, anchor="nw")
+        self.scroll_canvas.configure(yscrollcommand=self.scrollbar.set)
+
+        self.scroll_frame.bind(
+            "<Configure>",
+            lambda e: self.scroll_canvas.configure(scrollregion=self.scroll_canvas.bbox("all"))
+        )
+
+        self.scroll_canvas.place(x=10, y=150, width=412, height=450)
+        self.scrollbar.place(x=390, y=150, height=450)
+
+        # Info Label
+        self.info_label = Label(self.root, text="", font=("Arial", 10), bg="#FFFFFF", fg="#666")
+        self.info_label.place(x=10, y=710)
     
     def form_edit_transaksi(self):
-        print("Form Edit Transaksi")
+        try:
+            # Get ID from entry
+            id_entry = self.canvas.find_withtag("current")
+            id_value = self.canvas.itemcget(id_entry, "text").strip()
+            
+            if not id_value.isdigit():
+                messagebox.showerror("Error", "ID harus berupa angka!")
+                return
+            
+            transaksi_id = int(id_value)
+            
+            self.canvas_e = Canvas(
+                self.root,
+                bg="#FFFFFF",
+                height=752,
+                width=412,
+                bd=0,
+                highlightthickness=0,
+                relief="ridge"
+            )
+            self.canvas_e.place(x=0, y=0)
+
+            self.image_edit = PhotoImage(file=relative_to_assets("EditForm.png"))
+            self.canvas_e.create_image(206.0, 376.0, image=self.image_edit)
+
+            # Tombol Kembali
+            self.btn_kembali_edit = PhotoImage(file=relative_to_assets("btnKembali.png"))
+            Button(
+                self.root,
+                image=self.btn_kembali_edit,
+                borderwidth=0,
+                highlightthickness=0,
+                command=self.root.destroy,
+                relief="flat"
+            ).place(x=13.0, y=35.0, width=100.0, height=22.188)
+
+            # Tombol Simpan Perubahan
+            self.btn_simpan_edit = PhotoImage(file=relative_to_assets("btnSimpanEdit.png"))
+            Button(
+                self.root,
+                image=self.btn_simpan_edit,
+                borderwidth=0,
+                highlightthickness=0,
+                command=self.simpan_perubahan,
+                relief="flat"
+            ).place(x=86.0, y=692.0, width=108.0, height=30.0)
+
+            # Tombol Batal
+            self.btn_batal_edit = PhotoImage(file=relative_to_assets("btnBatalEdit.png"))
+            Button(
+                self.root,
+                image=self.btn_batal_edit,
+                borderwidth=0,
+                highlightthickness=0,
+                command=self.reset_form,
+                relief="flat"
+            ).place(x=224.0, y=692.0, width=108.0, height=30.0)
+            
+            # Deskripsi (Text)
+            self.entry_image_1 = PhotoImage(file=self.relative_to_assets("textarea.png"))
+            self.canvas_t.create_image(205.0, 581.0, image=self.entry_image_1)
+            self.deskripsi_text = Text(
+                self.window, bd=0, bg="#FFFFFF", fg="#000716", highlightthickness=0
+            )
+            self.deskripsi_text.place(x=55.0, y=530.0, width=300.0, height=100.0)
+
+            # Jumlah
+            self.entry_image_2 = PhotoImage(file=self.relative_to_assets("txtJumlah.png"))
+            self.canvas_t.create_image(205.0, 388.0, image=self.entry_image_2)
+            self.jumlah_entry = Entry(
+                self.window, bd=0, bg="#FFFFFF", fg="#000716", highlightthickness=0
+            )
+            self.jumlah_entry.place(x=55.0, y=372.0, width=300.0, height=30.0)
+
+            # Kategori
+            self.entry_image_3 = PhotoImage(file=self.relative_to_assets("txtKategori.png"))
+            self.canvas_t.create_image(205.0, 310.0, image=self.entry_image_3)
+            self.kategori_entry = Entry(
+                self.window, bd=0, bg="#FFFFFF", fg="#000716", highlightthickness=0
+            )
+            self.kategori_entry.place(x=55.0, y=294.0, width=300.0, height=30.0)
+
+            # Tanggal
+            self.entry_image_4 = PhotoImage(file=self.relative_to_assets("txtTanggal.png"))
+            self.canvas_t.create_image(205.0, 469.0, image=self.entry_image_4)
+            self.tanggal_entry = Entry(
+                self.window, bd=0, bg="#FFFFFF", fg="#000716", highlightthickness=0
+            )
+            self.tanggal_entry.place(x=55.0, y=453.0, width=300.0, height=30.0)
+            self.tanggal_entry.insert(0, datetime.now().strftime("%d-%m-%Y"))
+
+            # Jenis transaksi (Combobox)
+            self.jenis_var = StringVar(value="Pemasukan")
+            self.jenis_combo = ttk.Combobox(
+                self.window,
+                textvariable=self.jenis_var,
+                values=["Pemasukan", "Pengeluaran"],
+                state="readonly"
+            )
+            self.jenis_combo.place(x=55.0, y=210.0, width=300.0, height=32.0)
+
+            # Variabel untuk menyimpan ID yang dipilih
+            self.selected_id = transaksi_id
+            self.status_label = Label(self.root, text="", font=("Arial", 10), bg="#FFFFFF", fg="#666")
+            self.status_label.place(x=10, y=710)
+            self.load_transaksi_detail(transaksi_id)
+            self.load_transaksi_list()
+            
+        except Exception as e:
+            messagebox.showerror("Error", f"Gagal memuat detail transaksi: {str(e)}")
 
     def load_transaksi_list(self):
         try:
-            # Clear existing data
-            # for item in self.tree.get_children():
-            #     self.tree.delete(item)
-            
-            # Load data from database
+            for widget in self.scroll_frame.winfo_children():
+                widget.destroy()
+
             transaksi_list = self.db.get_all_transaksi()
-            
+
             if not transaksi_list:
-                # self.status_label.config(text="Tidak ada data transaksi", fg="red")
+                self.info_label.config(text="Tidak ada transaksi yang ditemukan", fg="red")
                 return
-            
-            self.bgPanel = []
-            self.bgIndex = []
-            # Insert data into treeview
-            jarak = 0
+
+            panel_img = PhotoImage(file=relative_to_assets("Panel.png"))
+            # index_img = PhotoImage(file=relative_to_assets("Circle.png"))
+            self.panel_img = []
+            # self.index_img = []
             i = 0
             for transaksi in transaksi_list:
-                if len(transaksi) == 1:
-                    self.bgPanel.append(PhotoImage(file=relative_to_assets("Panel.png")))
-                    self.bgPanel_frame = self.canvas.create_image(220, 230, image=self.bgPanel[i])
+                panel_frame = Frame(self.scroll_frame, width=panel_img.width(), height=panel_img.height(), bg="#FFFFFF")
+                panel_frame.pack(pady=5)
+                panel_frame.pack_propagate(False)
 
-                    self.bgIndex.append(PhotoImage(file=relative_to_assets("Circle.png")))
-                    self.bgIndex_frame = self.canvas.create_image(0, 0, image=self.bgIndex[i])
+                # Tambah canvas di atas panel_frame untuk garis
+                canvas = Canvas(panel_frame, width=panel_img.width(), height=panel_img.height(), bg="#FFFFFF", highlightthickness=0)
+                canvas.place(x=0, y=0)
 
-                    self.canvas.create_line(60, 163, 380, 163, fill="#000000", width=1)
-                    Label(self.root, text=f"{transaksi[0]}", bg="#FFFFFF", font=("Arial", 12)).place(x=15, y=160)
-                    Label(self.root, text=f"Jenis: {transaksi[1]}", bg="#FFFFFF", font=("Arial", 11)).place(x=60, y=170)
-                    Label(self.root, text=f"Kategori: {transaksi[2]}", bg="#FFFFFF", font=("Arial", 11)).place(x=60, y=193)
-                    Label(self.root, text=f"Jumlah: {transaksi[3]:,.0f}", bg="#FFFFFF", font=("Arial", 11)).place(x=60, y=216)
-                    Label(self.root, text=f"Tanggal: {transaksi[4]}", bg="#FFFFFF", font=("Arial", 11)).place(x=60, y=239)
-                    Label(self.root, text=f"Deskripsi: {transaksi[5] if transaksi[5] else 'Tidak ada'}", bg="#FFFFFF", font=("Arial", 11)).place(x=60, y=262)
-                    self.canvas.create_line(60, 290, 380, 290, fill="#000000", width=1)
-                    i += 1
-                    jarak += 170
-                else:
-                    self.bgPanel.append(PhotoImage(file=relative_to_assets("Panel.png")))
-                    self.bgPanel_frame = self.canvas.create_image(220, 230 + jarak + 10, image=self.bgPanel[i])
+                # Background label
+                bg_label = Label(panel_frame, image=panel_img)
+                bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-                    self.canvas.create_line(60, 163 + jarak + 10, 380, 163 + jarak + 10, fill="#000000", width=1)
-                    Label(self.root, text=f"{transaksi[0]}", bg="#FFFFFF", font=("Arial", 12)).place(x=15, y=160 + jarak + 10)
-                    Label(self.root, text=f"Jenis: {transaksi[1]}", bg="#FFFFFF", font=("Arial", 11)).place(x=60, y=170 + jarak + 10)
-                    Label(self.root, text=f"Kategori: {transaksi[2]}", bg="#FFFFFF", font=("Arial", 11)).place(x=60, y=193 + jarak + 10)
-                    Label(self.root, text=f"Jumlah: {transaksi[3]:,.0f}", bg="#FFFFFF", font=("Arial", 11)).place(x=60, y=216 + jarak + 10)
-                    Label(self.root, text=f"Tanggal: {transaksi[4]}", bg="#FFFFFF", font=("Arial", 11)).place(x=60, y=239 + jarak + 10)
-                    Label(self.root, text=f"Deskripsi: {transaksi[5] if transaksi[5] else 'Tidak ada'}", bg="#FFFFFF", font=("Arial", 11)).place(x=60, y=262 + jarak + 10)
-                    self.canvas.create_line(60, 290 + jarak + 10, 380, 290 + jarak + 10, fill="#000000", width=1)
-                    i += 1
-                    jarak += 170
+                # Tampilkan transaksi[0] di atas circle
+                circle_text = Label(panel_frame, text=str(transaksi[0]), font=("Arial", 10, "bold"), bg="#FFFFFF", fg="#000")
+                circle_text.place(x=35, y=30)  # Sesuaikan posisi agar teks ada di tengah gambar bulat
 
-                # jumlah_formatted = f"{transaksi[3]:,.0f}"
-                # formatted_row = (
-                #     transaksi[0],  # ID
-                #     transaksi[1],  # Jenis
-                #     transaksi[2],  # Kategori
-                #     jumlah_formatted,  # Jumlah
-                #     transaksi[4],  # Tanggal
-                # )
+                # Warna teks jumlah tergantung jenis
+                warna_teks = "#138A36" if transaksi[1] == "Pemasukan" else "#B22222"
+
+                # Frame isi konten di samping kanan circle
+                isi_frame = Frame(panel_frame, bg="#FFFFFF")
+                isi_frame.place(x=70, y=26)
+
+                self.panel_img.append(panel_img)
+
+                Label(isi_frame, text=f"Jenis: {transaksi[1]}", font=("Arial", 10), bg="#FFFFFF", fg=warna_teks).grid(row=0, column=0, sticky="w", padx=10)
+                Label(isi_frame, text=f"Kategori: {transaksi[2]}", font=("Arial", 10), bg="#FFFFFF").grid(row=1, column=0, sticky="w", padx=10)
+                Label(isi_frame, text=f"Jumlah: Rp {transaksi[3]:,.0f}", font=("Arial", 10), bg="#FFFFFF").grid(row=2, column=0, sticky="w", padx=10)
+                Label(isi_frame, text=f"Tanggal: {transaksi[4]}", font=("Arial", 10), bg="#FFFFFF").grid(row=3, column=0, sticky="w", padx=10)
+                Label(isi_frame, text=f"Deskripsi: {transaksi[5] if transaksi[5] else 'Tidak ada'}", font=("Arial", 10), bg="#FFFFFF", wraplength=300, justify="left").grid(row=4, column=0, sticky="w", padx=10)
                 
-                # if transaksi[1] == "Pemasukan":
-                #     self.tree.insert("", "end", values=formatted_row, tags=("pemasukan",))
-                # else:
-                #     self.tree.insert("", "end", values=formatted_row, tags=("pengeluaran",))
-            
-            # Configure tags
-            # self.tree.tag_configure("pemasukan", foreground="green")
-            # self.tree.tag_configure("pengeluaran", foreground="red")
-            
-            # self.status_label.config(text=f"Loaded {len(transaksi_list)} transaksi", fg="blue")
-            
         except Exception as e:
             messagebox.showerror("Error", f"Gagal memuat data: {str(e)}")
-            # self.status_label.config(text="Error memuat data", fg="red")
-    
+
     def on_select(self, event):
         selection = self.tree.selection()
         if selection:
@@ -257,21 +256,26 @@ class PageEditTransaksi:
             conn.close()
             
             if transaksi:
-                self.selected_id = transaksi[0]
+                jenis, kategori, jumlah, tanggal, deskripsi = transaksi
                 
                 # Fill form fields
-                self.id_var.set(str(transaksi[0]))
-                self.jenis_var.set(transaksi[1])
-                self.kategori_var.set(transaksi[2])
-                self.jumlah_var.set(str(transaksi[3]))
-                self.tanggal_var.set(transaksi[4])
+                self.jenis_var.set(jenis)
+                # Kategori
+                self.kategori_entry.delete(0, 'end')
+                self.kategori_entry.insert(0, kategori)
+                # Jumlah
+                self.jumlah_entry.delete(0, 'end')
+                self.jumlah_entry.insert(0, str(jumlah))
+                # Tanggal
+                self.tanggal_entry.delete(0, 'end')
+                self.tanggal_entry.insert(0, tanggal)
+                # Deskripsi
+                self.deskripsi_text.delete("1.0", "end")
+                self.deskripsi_text.insert("1.0", deskripsi)
+                # Set selected ID
+                self.selected_id = transaksi_id
                 
-                # Clear and set description
-                self.deskripsi_text.delete(1.0, END)
-                if transaksi[5]:
-                    self.deskripsi_text.insert(1.0, transaksi[5])
-                
-                self.status_label.config(text=f"Editing transaksi ID: {transaksi[0]}", fg="blue")
+                self.status_label.config(text=f"Editing transaksi ID: {transaksi_id}", fg="blue")
             
         except Exception as e:
             messagebox.showerror("Error", f"Gagal memuat detail: {str(e)}")
