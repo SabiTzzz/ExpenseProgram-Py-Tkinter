@@ -50,6 +50,16 @@ class DatabaseManager:
         conn.close()
         return rows
     
+    def cek_id_transaksi(self, id_transaksi):
+        conn = self.get_connection()
+        cursor = conn.cursor()
+        
+        cursor.execute('SELECT 1 FROM transaksi WHERE id = ?', (id_transaksi,))
+        exists = cursor.fetchone() is not None
+        
+        conn.close()
+        return exists
+    
     def hapus_transaksi(self, id_transaksi):
         conn = self.get_connection()
         cursor = conn.cursor()

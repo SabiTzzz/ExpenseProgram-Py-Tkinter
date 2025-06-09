@@ -94,7 +94,7 @@ class MainApp:
     def hapus_transaksi(self):
         hapus_window = Toplevel(self.root)
         PageHapusTransaksi(hapus_window)
-        self.center_window(hapus_window, 600, 400)
+        self.center_window(hapus_window, 412, 752)
     
     def laporan(self):
         laporan_window = Toplevel(self.root)
