@@ -16,6 +16,7 @@ def relative_to_assets(path: str) -> Path:
 class MainApp:
     def __init__(self, root):
         self.root = root
+        self.root.title("Halaman Utama")
         self.root.geometry("412x752")
         self.root.configure(bg="#F1F1F1")
         self.root.resizable(False, False)

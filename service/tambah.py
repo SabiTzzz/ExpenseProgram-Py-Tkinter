@@ -7,6 +7,7 @@ from database import DatabaseManager
 class PageTambahTransaksi:
     def __init__(self, window):
         print("Memuat PageTambahTransaksi di window:", window)
+        window.title("Tambah Transaksi")
         self.window = window
         self.window.configure(bg="#FFFFFF")
         self.window.resizable(False, False)

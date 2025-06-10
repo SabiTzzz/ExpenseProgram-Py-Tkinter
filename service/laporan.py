@@ -51,10 +51,10 @@ class PageLaporan:
             relief="flat"
         )
         self.button_1.place(
-            x=10,
-            y=30,
-            width=120,
-            height=30
+            x=13,
+            y=35,
+            width=100.0,
+            height=22.188
         )
 
         # Label teks (disesuaikan dengan ukuran canvas)
